@@ -56,7 +56,7 @@ jobs:
          
 
       - name: run Chechov
-        uses: antonbabenko/checkov-action@v2
+        uses: bridgecrewio/checkov-action
         with:
           directory: .
           quiet: true 
