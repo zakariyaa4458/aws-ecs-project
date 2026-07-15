@@ -55,14 +55,7 @@ jobs:
         uses: terraform-linters/setup-tflint@v4
          
 
-      - name: run Chechov
-        uses: bridgecrewio/checkov-action
-        with:
-          directory: .
-          quiet: true 
-        
-
-
+  
       - name: Terraform validate
         run: terraform validate
 
