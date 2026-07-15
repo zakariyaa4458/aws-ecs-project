@@ -56,7 +56,10 @@ jobs:
          
 
       - name: run Chechov
-        uses: checkov/checkov-action@v2
+        uses: bridgecrew/chechov-action@v2
+        with:
+          directory: .
+          quiet: true 
         
 
 
