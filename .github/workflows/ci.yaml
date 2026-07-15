@@ -52,7 +52,8 @@ jobs:
         run: terraform fmt -check
 
       - name: run tflint
-        run: tflint
+        uses: terraform-linters/setup-tflint@v4
+         
 
       - name: run Chechov
         run: checkov -d . 
