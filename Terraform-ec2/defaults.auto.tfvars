@@ -1,0 +1,6 @@
+#instance_type = "t3.micro"
+#ami = "ami-0a989d06dca7dd6f4"
+aws_region  = "eu-west-2"
+environment = "production"
+image_tag   = "latest"
+app_name    = "threat-composer-web"
