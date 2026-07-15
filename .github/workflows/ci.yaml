@@ -56,7 +56,8 @@ jobs:
          
 
       - name: run Chechov
-        run: checkov -d . 
+        uses: checkov/checkov-action@v2
+        
 
 
       - name: Terraform validate
