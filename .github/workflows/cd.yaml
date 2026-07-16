@@ -3,7 +3,7 @@ name: My Application CD Pipeline
 on:
   workflow_run:
     workflows:
-      - CI Pipeline
+      - My Application CI Pipeline
     types:
       - completed
     branches:
@@ -78,7 +78,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: my-application
-          IMAGE_TAG: ${{ github.sha }}
+          IMAGE_TAG: ${{ github.event.workflow_run.head_sha }}
         run: |
           aws ecs update-service --cluster my-cluster --service my-service --force-new-deployment --image $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
