@@ -52,6 +52,9 @@ jobs:
 
 
     steps: 
+
+      - name: Checkout code
+        uses: actions/checkout@v2
       
       - name: Terraform init
         working-directory: Terraform-ec2
