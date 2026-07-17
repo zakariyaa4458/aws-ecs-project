@@ -1,9 +1,9 @@
 module "app" {
-  source      = "./modules/app"
-  environment = var.environment
-  app_name    = var.app_name
-  image_tag   = var.image_tag
-  aws_region  = var.aws_region
+  source               = "./modules/app"
+  environment          = var.environment
+  app_name             = var.app_name
+  image_tag            = var.image_tag
+  aws_region           = var.aws_region
   cloudwatch_log_group = module.security.cloudwatch_log_group
 
   private_subnet_ids    = module.networking.private_subnet_ids
@@ -38,7 +38,7 @@ module "security" {
   app_name = var.app_name
 
   vpc_id = module.networking.vpc_id
-  
+
 
 }
 
