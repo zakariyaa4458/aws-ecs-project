@@ -1,5 +1,7 @@
 name: My Application CI Pipeline
 
+run-name: CI Pipeline triggered by ${{ github.actor }}
+
 on:
   push:
     branches:

@@ -1,5 +1,7 @@
 name: My Application CD Pipeline
 
+run-name: CD Pipeline triggered by ${{ github.actor }}
+
 on:
   workflow_run:
     workflows:
