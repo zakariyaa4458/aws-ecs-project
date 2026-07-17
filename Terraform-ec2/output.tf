@@ -8,3 +8,9 @@ output "ecr_repository_url" {
   value       = module.app.ecr_repository_url
 }
 
+
+output "vpc_id" {
+  value = module.networking.vpc_id
+}
+
+

@@ -45,7 +45,7 @@ resource "aws_cloudwatch_log_group" "ecs" {
 resource "aws_security_group" "alb" {
   name        = "alb-sg"
   description = "ALB security group"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = var.vpc_id
 
   ingress {
     description = "HTTP from internet"
@@ -77,12 +77,12 @@ resource "aws_security_group" "alb" {
 resource "aws_security_group" "ecs" {
   name        = "ecs-tasks-sg"
   description = "ECS tasks security group"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = var.vpc_id
 
   ingress {
     description     = "Traffic from ALB only"
-    from_port       = 80
-    to_port         = 80
+    from_port       = 3000
+    to_port         = 3000
     protocol        = "tcp"
     security_groups = [aws_security_group.alb.id] # Reference SG
   }
@@ -100,7 +100,7 @@ resource "aws_security_group" "ecs" {
 resource "aws_security_group" "rds" {
   name        = "rds-sg"
   description = "RDS security group"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = var.vpc_id
 
   ingress {
     description     = "Traffic from ECS tasks only"
@@ -120,14 +120,4 @@ resource "aws_security_group" "rds" {
 
 }
 
-# VPC
-resource "aws_vpc" "main" {
-  cidr_block           = "10.0.0.0/22" # 1,024 IPs - right-sized
-  enable_dns_hostnames = true
-  enable_dns_support   = true
 
-  tags = {
-    Name        = "my-app-vpc"
-    Environment = "production"
-  }
-}

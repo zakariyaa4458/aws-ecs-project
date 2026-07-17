@@ -20,3 +20,13 @@ variable "app_name" {
   description = "Name of the application"
   default     = "my-app"
 }
+
+variable "db_name" {
+  type    = string
+  default = "myappdb"
+}
+
+variable "db_username" {
+  type    = string
+  default = "admin"
+}

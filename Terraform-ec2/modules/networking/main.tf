@@ -1,46 +1,21 @@
-data "aws_route53_zone" "main" {
-  name         = "zakariyaalab.com"
-  private_zone = false
+locals {
+  certificate_domains = toset([
+    var.domain_name
+  ])
 }
 
-resource "aws_route53_record" "www" {
-  zone_id = data.aws_route53_zone.main.zone_id
-  name    = "www"
-  type    = "A"
 
-
-  alias {
-    name                   = aws_lb.web-lb.dns_name
-    zone_id                = aws_lb.web-lb.zone_id
-    evaluate_target_health = true
-  }
-}
-
-resource "aws_route53_record" "cert_validation" {
-
-  for_each = {
-    for option in aws_acm_certificate.cert.domain_validation_options :
-    option.domain_name => option
-  }
-
-  zone_id = data.aws_route53_zone.main.zone_id
-  name    = each.value.resource_record_name
-  type    = each.value.resource_record_type
-  ttl     = 60
-  records = [each.value.resource_record_value]
-
-}
 
 resource "aws_acm_certificate_validation" "cert_validation" {
 
 
   certificate_arn         = aws_acm_certificate.cert.arn
-  validation_record_fqdns = [for record in aws_route53_record.cert_validation : record.fqdn]
+ # validation_record_fqdns = [for record in aws_route53_record.cert_validation : record.fqdn]
 
 }
 
 resource "aws_acm_certificate" "cert" {
-  domain_name       = "www.zakariyaalab.com"
+  domain_name       = var.domain_name
   validation_method = "DNS"
 
 
@@ -56,7 +31,7 @@ resource "aws_vpc" "main" {
 
   tags = {
     Name        = "my-app-vpc"
-    Environment = "production"
+    Environment = "production" 
   }
 }
 
@@ -149,43 +124,5 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
-resource "aws_lb" "web-lb" {
-  name               = "web-lb"
-  internal           = false
-  load_balancer_type = "application"
-  security_groups    = [aws_security_group.alb.id]
-  subnets            = aws_subnet.public[*].id
 
-  enable_deletion_protection = false
-}
 
-resource "aws_security_group" "alb" {
-  name        = "alb-sg"
-  description = "ALB security group"
-  vpc_id      = aws_vpc.main.id
-
-  ingress {
-    description = "HTTP from internet"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    description = "HTTPS from internet"
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = { Name = "alb-sg" }
-}
