@@ -82,4 +82,4 @@ jobs:
      steps:
       - name: Verify deployment
         run: | 
-          curl --fail https://your-domain.com/  
+          curl --fail https://www.zakariyaalab.com/  
