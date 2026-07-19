@@ -155,38 +155,6 @@ The Continuous Deployment pipeline performs:
 - Infrastructure update
 - Deployment verification using curl
 
----
-
-# Project Structure
-
-```
-.
-├── .github/
-│   └── workflows/
-│       ├── ci.yml
-│       └── cd.yml
-│
-├── Terraform/
-│   ├── modules/
-│   │   ├── app/
-│   │   ├── database/
-│   │   ├── loadbalancer/
-│   │   ├── networking/
-│   │   └── security/
-│   │
-│   ├── backend.tf
-│   ├── provider.tf
-│   ├── variables.tf
-│   └── outputs.tf
-│
-├── Dockerfile
-├── docker-compose.yml
-└── README.md
-```
-
----
-
-
 
 # Security
 
