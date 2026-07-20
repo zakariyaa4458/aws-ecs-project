@@ -16,7 +16,8 @@ The infrastructure is fully reproducible and can be deployed or destroyed using 
 
 ## Architecture
 
-<img width="11194" height="8391" alt="AWS Infrastructure Diagram" src="https://github.com/user-attachments/assets/269fc139-a51d-4b8d-a75e-0457b3afcb05" />
+<img width="11194" height="8391" alt="AWS Infrastructure Diagram (1)" src="https://github.com/user-attachments/assets/c7ea2cbe-6e18-4a84-b781-d4ee49a4af77" />
+
 
 
 ### Deployment Flow
