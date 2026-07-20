@@ -155,6 +155,10 @@ The Continuous Deployment pipeline performs:
 - Infrastructure update
 - Deployment verification using curl
 
+# Pipelines working
+
+<img width="1422" height="197" alt="Pipelines-working" src="https://github.com/user-attachments/assets/34abf746-b4da-4bf4-a97b-94878d697e1b" />
+
 
 # Security
 
