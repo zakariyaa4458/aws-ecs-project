@@ -68,12 +68,12 @@ jobs:
           terraform_version: 1.10.0
       
       - name: Terraform init
-        working-directory: Terraform-ec2
+        working-directory: Terraform-ecs
         run: terraform init
         
 
       - name: Terraform apply
-        working-directory: Terraform-ec2
+        working-directory: Terraform-ecs
         run: terraform apply -auto-approve
         
 

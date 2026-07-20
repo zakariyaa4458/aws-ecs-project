@@ -7,6 +7,14 @@ on:
     branches:
       - main
 
+    paths:
+    - dockerfile
+    - Terradorm-ecs/**
+    - package.json
+    - package-lock.json
+    - .github/workflows/**
+
+
 permissions:
   id-token: write
   contents: read
@@ -41,7 +49,7 @@ jobs:
 
     defaults:
       run: 
-       working-directory: Terraform-ec2
+       working-directory: Terraform-ecs
 
   
 
