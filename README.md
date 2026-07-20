@@ -20,19 +20,23 @@ The infrastructure is fully reproducible and can be deployed or destroyed using 
 │       ├── ci.yml
 │       ├── cd.yml
 │       └── destroy.yml
+├── Terraform-ecs/
+│   ├── backend.tf
+│   ├── main.tf
+│   ├── outputs.tf
+│   ├── provider.tf
+│   ├── variables.tf
+│   └── modules/
+│       ├── app/
+│       ├── database/
+│       ├── loadbalancer/
+│       ├── networking/
+│       └── security/
 ├── dockerfile
-├── README.md
-└── Terraform-ecs/
-    ├── backend.tf
-    ├── provider.tf
-    ├── variables.tf
-    ├── outputs.tf
-    └── modules/
-        ├── app/
-        ├── database/
-        ├── loadbalancer/
-        ├── networking/
-        └── security/
+├── package.json
+└── README.md
+
+---
 
 ## Architecture
 
