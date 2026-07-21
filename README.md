@@ -13,10 +13,37 @@ This project provisions an entire AWS environment using Terraform and deploys th
 The infrastructure is fully reproducible and can be deployed or destroyed using Terraform.
 
 ---
+## Project Structure
 
+```text
+.
+├── .github/
+│   └── workflows/
+│       ├── ci.yml
+│       ├── cd.yml
+│       └── destroy.yml
+├── Terraform-ecs/
+│   ├── backend.tf
+│   ├── main.tf
+│   ├── outputs.tf
+│   ├── provider.tf
+│   ├── variables.tf
+│   └── modules/
+│       ├── app/
+│       ├── database/
+│       ├── loadbalancer/
+│       ├── networking/
+│       └── security/
+├── dockerfile
+├── package.json
+└── README.md
+```
 ## Architecture
 
-<img width="1519" height="1348" alt="AWS-Infrastructure-Diagram" src="https://github.com/user-attachments/assets/d1910824-db6c-437a-a8af-fb38965cfa0f" />
+<img width="8000" height="5689" alt="Copy of AWS Infrastructure Diagram (2)" src="https://github.com/user-attachments/assets/9077014f-80ed-40e6-8e87-62c552e208a7" />
+
+
+
 
 ### Deployment Flow
 
