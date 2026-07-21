@@ -47,7 +47,7 @@ jobs:
         run: |
           docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
-  terraform-check:
+  terraform-deploy:
     runs-on: ubuntu-latest
     needs: deploy
 
